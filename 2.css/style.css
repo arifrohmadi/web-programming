@@ -1,0 +1,15 @@
+p {
+    color: blue;
+    font-family: verdana;
+    font-size: 2opx;
+}
+
+.highlight {
+    font-size: 20px;
+    background-color: yellow;
+}
+
+#header {
+    margin: 20px;
+    padding: 10px;
+}
