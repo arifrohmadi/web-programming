@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- internal javascript -->
+    <!-- <script>
+        window.onload = function() {
+            document.getElementById("demo").innerHTML = "My First Javascript";
+        }
+    </script> -->
+</head>
+
+<body>
+    <div id="demo"></div>
+    <div class="konten">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque quidem voluptates eaque harum quisquam quo hic beatae iusto vitae quod?
+    </div>
+
+    <!-- JAVASCRIPT EVENTS -->
+    <button id="mybutton">Klik</button>
+    <button onclick="document.getElementById('demo').innerHTML = Date()">The Time is</button>
+    <br>
+    
+    <!-- internal javascript -->
+    <script>
+        /* OUTPUT IN JAVASCRIPT */
+        //inner html or inner text 
+        document.getElementById("demo").innerHTML = "My First Javascript";
+        document.getElementById("demo").innerText = "Teks di Selector ID Demo telah diubah";
+
+        // document.write()
+        document.write("Halo Dunia");
+
+        // window.alert()
+        // window.alert("Selamat Belajar Javascript");
+
+        // console.log()
+        console.log("2"+2);
+
+        /* JAVASCRIPT IDENTIFIER */
+        // Underscore
+        
+        /* JAVASCRIPT VARIABLES */ 
+        var name = "Arif";
+        var name = "Candra";
+        console.log(name);
+
+        function hitung() {
+            for (i=0; i<11; i++){
+                var count = i;
+            }
+            console.log(count);
+        }
+        hitung();
+
+        let nama = "Tono";
+        // let nama = "Joko"; // error
+        nama = "Tino";
+        console.log(nama);
+
+        /* function hitung() {
+            for (i=0; i<11; i++){
+                let count = i;
+            }
+            console.log(count);
+        }
+        hitung(); */
+
+        const PHI = 3.14;
+        // PHI = 7.0; // error
+
+        /* JAVASCRIPT FUNCTIONS */
+        function jumlah(angka1,angka2){
+            hasil = angka1 + angka2;
+            return hasil;
+        }
+        console.log(jumlah(2,3));
+
+        /* JAVASCRIPT EVENTS */
+        let button = document.getElementById("mybutton");
+        button.addEventListener("click",function(){
+            alert('Tombol telah diklik');
+        });
+    </script>
+
+    <!-- external javascript -->
+    <!-- <script src="script.js"></script> -->
+</body>
+</html>

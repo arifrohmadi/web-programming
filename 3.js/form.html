@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Sederhana</title>
+</head>
+<body>
+    <form method="POST" onsubmit="konfirmasi();" name="formulir">
+        <pre>
+            Nama : <input type="text" name="nama"><br>
+            NIM  : <input type="text" name="nim"><br>
+            Kelas: <input type="text" name="kelas"><br>
+            <input type="submit" name="submit" value="Submit">  
+        </pre>
+    </form>
+
+    <script type="text/javascript">
+        function konfirmasi()
+        {
+            let nama = document.formulir.nama.value;
+            let nim  = document.formulir.nim.value;
+            let kelas  = document.formulir.kelas.value;
+            
+            if (nama!="" && nim !="" && kelas !="")
+            {
+                alert("Nama :"+nama+"\nNIM :"+nim+"\nKelas :"+kelas);    
+            } else {
+                alert("Semua kolom harus diisi dengan benar!");
+            }
+        }
+    </script>
+</body>
+
+</html>
