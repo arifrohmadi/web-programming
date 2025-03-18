@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.7.1/dist/jquery.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script> -->
+</head>
+
+<body>
+    <div id="hello">Hello World</div>
+    <p>ini teks pertama</p>
+    <div id="test"><b>ini teks dengan id test</b></div>
+    <div class="test">ini teks dengan class test</div>
+    <p class="test">ini teks dengan class test ke-2</p>
+
+    <div id="jquery-get">
+        <p>
+        <h3>JQuery Get</h3>
+        </p>
+        <button id="btn1">Show Text</button>
+        <button id="btn2">Show HTML</button>
+        <p>Nama: <input type="text" id="nama" name="nama" value=""></p>
+        <button id="btn3">Show Value</button><br>
+        <div id="tautan">
+            <p><a href="https://google.com" id="link">Link Eksternal</a></p>
+            <button id="btn4">Show href Value</button>
+        </div>
+    </div>
+
+    <div id="jquery-set">
+        <p>
+        <h3>JQuery Set</h3>
+        </p>
+        <p id="set-1">Set 1</p>
+        <p id="set-2"><b>Set 2</b></p>
+        <p>Input: <input type="text" id="set-3" value="Default"></p>
+        <p><a href="http://kompas.com" id="set-4">kompas.com</a></p>
+        <button id="btns-1">Set Text</button>
+        <button id="btns-2">Set HTML</button>
+        <button id="btns-3">Set Value</button>
+        <button id="btns-4">Set Attribute Value</button>
+        <button id="btns-5">Show Old/New HTML</button>
+    </div>
+
+    <div id="jquery-add">
+        <h3>JQuery Add</h3>
+        <div id="add-1">Ini teks 1</div>
+    </div>
+
+    <div id="jquery-remove" style="height:150px;width:300px;padding:8px;border:1px solid black;background-color:yellow;">
+        <h3>JQuery Remove</h3>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint, distinctio labore quod nemo ipsa necessitatibus!</p>
+    </div>
+
+    <div id="jquery-events">
+        <h3>JQuery Events</h3>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime eos deleniti nisi! Aut, labore! Architecto alias itaque iste sit officia!</p>
+    </div>
+
+    <script type="text/javascript">
+        // document.getElementById("hello").innerHTML="JQuery Hello World!";
+        // $(document).ready(function() {
+        $(function () {
+            $("#hello").html("JQuery Hello World!");
+            // $("p").hide();
+            $(".test").css("color", "red");
+            $("#test").css("font-weight", "bold");
+
+            /* jQuery get */
+            $("#btn1").click(function () {
+                alert("Text: " + $("#test").text());
+            });
+            $("#btn2").click(function () {
+                alert("HTML: " + $("#test").html());
+            });
+            $("#btn3").click(function () {
+                alert("Value: " + $("#nama").val());
+            });
+            $("#btn4").click(function () {
+                alert("Attribute Value: " + $("#link").attr("href"));
+            });
+
+            /* jQuery set */
+            $("#btns-1").click(function () {
+                $("#set-1").text("Hello world");
+            });
+            $("#btns-2").click(function () {
+                $("#set-2").html("<b>Hello world</b>");
+            });
+            $("#btns-3").click(function () {
+                $("#set-3").val("Duck");
+            });
+            $("#btns-4").click(function () {
+                $("#set-4").attr({
+                    "href": "http://detik.com",
+                    "target": "_blank"
+                }).text("detik.com");
+            });
+            $("#btns-5").click(function () {
+                $("#set-1").html(function (index,old){
+                    return "Old: " + old + "(index: " + index +") <br> New: Halo Dunia";
+                })
+            });
+
+            /* jQuery add */
+            $("#add-1").append(" <b>Ini teks append</b>");
+            $("#add-1").prepend(" <b>Ini teks prepend</b> ");
+            $("#add-1").before(" <i>Ini teks before</i> ");
+            $("#add-1").after(" <i>Ini teks after</i> ");
+            let txt1 = "Indonesia";
+            let txt2 = " ";
+            let txt3 = "Jaya";
+            $("#add-1").before(txt1,txt2,txt3);
+
+            /* jQuery remove */
+            // $("#jquery-remove").remove();
+            $("#jquery-remove p").remove();
+            $("#jquery-remove").empty();
+
+            /* jQuery events */
+            $("#jquery-events").click(function () {
+                // $(this).find("p").css("color", "red");
+                $('p',this).css("color", "red");
+            });
+            $("#jquery-events").dblclick(function () {
+                $('p',this).css("color", "green");
+            });
+            $("#jquery-events").mouseenter(function () {
+                $('p',this).css("color", "blue");
+            });
+        })
+    </script>
+</body>
+
+</html>
