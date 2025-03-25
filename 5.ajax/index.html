@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="konten"></div>
+    <!-- <button onclick="window.location.href='konten.html';">Load Konten</button> -->
+    <button type="button" onclick="load()">Load Konten</button>
+    <p></p>
+
+    <button type="button" id="load-data">Load Data</button>
+    <p id="payload"></p>
+
+
+    <button type="button" onclick="loadData()">Request Data</button>
+    <div id="post-konten"></div>
+
+    <script>
+        function load() {
+            /* const xhttp = new XMLHttpRequest(); //Create an XMLHttpRequest object
+            xhttp.onload = function(){ //Define a callback function
+                document.getElementById("konten").innerHTML = this.responseText;
+            }
+            xhttp.open("GET", "konten.html"); //Open the XMLHttpRequest object
+            xhttp.send(); //Send a Request to a server
+            */
+
+            // $("#konten").load("konten.html");
+
+            $.ajax({
+                url: "info.txt",
+                type: "GET",
+                success: function (result) {
+                    $("#konten").html(result);
+                }
+            });
+        }
+
+        function loadData() {
+            /* const xhttp = new XMLHttpRequest();
+            xhttp.onload = function(){
+                document.getElementById("post-konten").innerHTML = this.responseText;
+            }
+            xhttp.open("POST", "https://reqres.in/api/users/create");
+            xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            let data = {
+                "name": "Budi",
+                "job": "Programmer"
+            }
+            // xhttp.send("name='Budi'&job='Programmer'");
+            xhttp.send(JSON.stringify(data)); */
+
+            $.ajax({
+                url: "https://reqres.in/api/users/create",
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({
+                    name: "Budi",
+                    job: "Programmer"
+                }),
+                success: function (result) {
+                    console.log(result);
+                    $("#post-konten").html("name: " + result.name + " job: " + result.job);
+                }
+            })
+        }
+
+        $(function () {
+            $("#load-data").click(function () {
+                $.ajax({
+                    url: "https://weather-api-tau-six.vercel.app/provinces",
+                    type: "GET",
+                    success: function (result) {
+                        console.log(result);
+                        res = result.data;
+                        let output = "";
+                        $.each(res, function (key, value) {
+                            output += (key + 1) + ": " + value.name + "<br>";
+                        });
+                        $("#payload").html(output);
+                    },
+                    error: function (error) {
+                        console.error("Error fetching data:", error);
+                    }
+                });
+            })
+        })
+    </script>
+</body>
+
+</html>
