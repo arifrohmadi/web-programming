@@ -1,0 +1,78 @@
+#create new project
+composer create-project --prefer-dist laravel/laravel:^12.0 coba 
+
+#check laravel installer version
+laravel --version 
+
+#check laravel version
+php artisan --version 
+
+#running laravel
+php artisan serve 
+
+#.env
+FILESYSTEM_DISK=public (supaya file yang diunggah dapat diakses publik)
+php artisan storage:link #membuat symlink storage
+
+// edit setting db
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=
+
+// set konfigurasi database baru 
+php artisan config:clear
+
+# membuat model dan migration
+php artisan make:model Product -m
+
+// edit migration function up
+public function up(): void
+    {
+        Schema::create('products', function (Blueprint $table) {
+            $table->id();
+            $table->string('image');
+            $table->string('title');
+            $table->text('description');
+            $table->bigInteger('price');
+            $table->integer('stock')->default(0);
+            $table->timestamps();
+        });
+    }
+
+// edit model Product
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Product extends Model
+{
+    use HasFactory;
+
+    /**
+     * fillable
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'image',
+        'title',
+        'description',
+        'price',
+        'stock',
+    ];
+}
+
+// jalankan migration
+php artisan migrate
+
+# menampilkan data dari database
+php artisan make:controller ProductController
+
+# melihat daftar lengkap route
+php artisan route:list
