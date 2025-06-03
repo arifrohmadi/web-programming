@@ -1,0 +1,64 @@
+# Laravel Login & Registration using Jetstream
+1.composer create-project --prefer-dist laravel/Laravel api
+2.composer require laravel/Jetstream
+3.php artisan jetstream:install livewire
+4.php artisan serve
+
+# API
+1.membuat API resources
+php artisan make:resource ProductResource
+2. custom response
+<?php
+
+namespace App\Http\Resources;
+
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
+
+class ProductResource extends JsonResource
+{
+    //define properti
+    public $status;
+    public $message;
+    public $resource;
+
+    /**
+     * __construct
+     *
+     * @param  mixed $status
+     * @param  mixed $message
+     * @param  mixed $resource
+     * @return void
+     */
+    public function __construct($status, $message, $resource)
+    {
+        parent::__construct($resource);
+        $this->status  = $status;
+        $this->message = $message;
+    }
+
+    /**
+     * toArray
+     *
+     * @param  mixed $request
+     * @return array
+     */
+    public function toArray(Request $request): array
+    {
+        return [
+            'success'   => $this->status,
+            'message'   => $this->message,
+            'data'      => $this->resource
+        ];
+    }
+}
+
+3. Membuat controller product
+php artisan make:controller Api/ProductController
+
+4. membuat route rest API
+php artisan install:api
+listing route: php artisan route:list
+
+5. uji coba RESTful API
+http://localhost:8000/api/products
