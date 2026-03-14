@@ -28,8 +28,9 @@
     <script>
         /* OUTPUT IN JAVASCRIPT */
         //inner html or inner text 
-        document.getElementById("demo").innerHTML = "My First Javascript";
         document.getElementById("demo").innerText = "Teks di Selector ID Demo telah diubah";
+        document.getElementById("demo").innerHTML = "<b>My First Javascript<b>";
+        
 
         // document.write()
         document.write("Halo Dunia");
@@ -60,6 +61,13 @@
         // let nama = "Joko"; // error
         nama = "Tino";
         console.log(nama);
+
+        // hoisting: deklarasi variabel setelah dipanggil
+        console.log(t);
+        var t = "hore";
+
+        // console.log(r);
+        // let r = "horay"; // Cannot access 'r' before initialization
 
         /* function hitung() {
             for (i=0; i<11; i++){
