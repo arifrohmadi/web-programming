@@ -21,6 +21,7 @@ setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1
         echo "Cookies are disabled.";
     }
 
+    echo "<br>";
     # check the specific cookie is set or not
     if (!isset($_COOKIE[$cookie_name])) {
         echo "Cookie named '" . $cookie_name . "' is not set!";
